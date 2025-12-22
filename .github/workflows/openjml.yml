@@ -1,0 +1,52 @@
+name: OpenJML verification
+
+on:
+  push:
+    branches: [ main, master, '**/main', '**/master' ]
+  pull_request:
+
+env:
+  OPENJML_VERSION: "21-0.19"
+
+jobs:
+  openjml:
+    name: Run OpenJML
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Download OpenJML
+        run: |
+          mkdir -p tools/openjml
+          set -e
+          for name in "openjml-${{ env.OPENJML_VERSION }}-jar-with-dependencies.jar" "OpenJML-${{ env.OPENJML_VERSION }}.jar" "openjml-${{ env.OPENJML_VERSION }}.jar" "openjml.jar"; do
+            url="https://github.com/OpenJML/OpenJML/releases/download/v${{ env.OPENJML_VERSION }}/$name"
+            echo "Trying $url"
+            if curl -sSfL "$url" -o tools/openjml/openjml.jar; then
+              echo "Downloaded $name -> tools/openjml/openjml.jar"
+              break
+            fi
+          done
+          if [ ! -f tools/openjml/openjml.jar ]; then
+            echo "OpenJML not found on GitHub releases; attempting Maven fallback"
+            mvn org.apache.maven.plugins:maven-dependency-plugin:3.5.0:get -Dartifact=org.openjml:openjml:${{ env.OPENJML_VERSION }} -Dtransitive=false || true
+            mvn org.apache.maven.plugins:maven-dependency-plugin:3.5.0:copy -Dartifact=org.openjml:openjml:${{ env.OPENJML_VERSION }} -DoutputDirectory=tools/openjml -Dtransitive=false || true
+            jars=$(ls tools/openjml 2>/dev/null || true)
+            echo "tools/openjml contains: $jars"
+            if ls tools/openjml/*openjml*.jar >/dev/null 2>&1; then
+              mv tools/openjml/*openjml*.jar tools/openjml/openjml.jar || true
+            fi
+          fi
+          ls -la tools/openjml || true
+
+      - name: Run OpenJML via Maven profile
+        run: |
+          mvn -B -V -Popenjml -DskipTests verify

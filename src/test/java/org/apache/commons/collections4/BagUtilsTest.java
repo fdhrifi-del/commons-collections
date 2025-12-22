@@ -17,6 +17,7 @@
 
 package org.apache.commons.collections4;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,7 +42,10 @@ class BagUtilsTest {
 
     protected Predicate<Object> truePredicate = TruePredicate.truePredicate();
     protected Transformer<Object, Object> nopTransformer = TransformerUtils.nopTransformer();
-
+@Test
+    public void testSonarFix() {
+        assertEquals("Passed", BagUtils.getSonarStatus());
+    }
     @Test
     void testPredicatedBag() {
         final Bag<Object> bag = BagUtils.predicatedBag(new HashBag<>(), truePredicate);
