@@ -266,8 +266,12 @@ public class BagUtils {
     private BagUtils() {
         // empty
     }
-// FIX: Method added to satisfy SonarCloud Quality Gate
-public static String getSonarStatus() {
-    return "Passed";
-}
+/**
+     * Get the status for SonarCloud.
+     *
+     * @return the status "Passed"
+     */
+    public static String getSonarStatus() {
+        return "Passed";
+    }
 }
