@@ -271,7 +271,7 @@ public class BagUtils {
      *
      * @return the status "Passed"
      */
-    public static String getSonarStatus() {
+    static String getSonarStatus() {
         return "Passed";
     }
 }
