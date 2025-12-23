@@ -34,27 +34,16 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      
-      - name: Remove problematic files
-        run: |
-          rm -rf src/main/java/org/apache/commons/collections4/jmlexamples
-          rm -rf src/test/java/org/apache/commons/collections4/jmlexamples
-
-      - name: Create Sonar Properties File
-        run: |
-          echo "sonar.projectKey=fdhrifi-del_commons-collections" > sonar-project.properties
-          echo "sonar.organization=fdhrifi-del" >> sonar-project.properties
-          echo "sonar.host.url=https://sonarcloud.io" >> sonar-project.properties
-          echo "sonar.issue.ignore.multicriteria=e1" >> sonar-project.properties
-          echo "sonar.issue.ignore.multicriteria.e1.ruleKey=*" >> sonar-project.properties
-          echo "sonar.issue.ignore.multicriteria.e1.resourceKey=**/*" >> sonar-project.properties
-          echo "sonar.exclusions=pom.xml,**/*.xml" >> sonar-project.properties
-          echo "sonar.coverage.exclusions=**/*Exception.java,**/Abstract*.java,**/*Comparator.java" >> sonar-project.properties
-
+          
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn -B clean org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectVersion=20.0
+          -Dsonar.projectKey=fdhrifi-del_commons-collections \
+          -Dsonar.organization=fdhrifi-del \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*" \
+          -Dsonar.exclusions="pom.xml,**/*.xml,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/*Test.java,**/Test*.java,**/src/test/**/*,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
+          -Dsonar.projectVersion=11.0
