@@ -45,5 +45,6 @@ jobs:
           -Dsonar.organization=fdhrifi-del \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*" \
-          -Dsonar.exclusions="pom.xml,**/*.xml,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/*Test.java,**/Test*.java,**/src/test/**/*,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
-          -Dsonar.projectVersion=11.0
+          -Dsonar.exclusions="pom.xml,**/*.xml,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
+          -Dsonar.test.exclusions="**/src/test/**/*,**/*Test.java,**/BagUtilsTest.java,**/IteratorUtilsTest.java" \
+          -Dsonar.projectVersion=12.0
