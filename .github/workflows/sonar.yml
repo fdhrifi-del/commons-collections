@@ -39,11 +39,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn -B clean org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.projectKey=fdhrifi-del_commons-collections \
-          -Dsonar.organization=fdhrifi-del \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*" \
-          -Dsonar.exclusions="pom.xml,**/*.xml,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/*Test.java,**/Test*.java,**/src/test/**/*,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
-          -Dsonar.projectVersion=11.0
+        # Zidna les quotes "..." w kabbarna liste l'exclusions
+        run: mvn -B clean org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fdhrifi-del_commons-collections -Dsonar.organization=fdhrifi-del -Dsonar.host.url=https://sonarcloud.io -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java" -Dsonar.exclusions="**/functors/**/*,**/transformers/**/*,**/*Transformer.java,**/*Closure.java,**/*Factory.java,**/map/**/*" -Dsonar.projectVersion=2.6
