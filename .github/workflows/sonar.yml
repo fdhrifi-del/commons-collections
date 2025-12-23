@@ -50,4 +50,4 @@ jobs:
           -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*" \
           -Dsonar.exclusions="pom.xml,**/*.xml,**/src/test/**/*,**/*Test.java,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
           -Dsonar.test.exclusions="**/src/test/**/*,**/*Test.java,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/*Utils.java,**/jmlexamples/**/*" \
-          -Dsonar.projectVersion=13.0
+          -Dsonar.projectVersion=12.0
