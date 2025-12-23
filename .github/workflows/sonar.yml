@@ -46,7 +46,7 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.issue.ignore.multicriteria=e1 \
           -Dsonar.issue.ignore.multicriteria.e1.ruleKey=* \
-          -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*Test.java \
-          -Dsonar.exclusions="pom.xml,**/*.xml,**/jmlexamples/**/*,**/Examples.java" \
+          -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.java \
+          -Dsonar.exclusions="pom.xml,**/*.xml" \
           -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*,**/Examples.java" \
-          -Dsonar.projectVersion=14.0
+          -Dsonar.projectVersion=Final
