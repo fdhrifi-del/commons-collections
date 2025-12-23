@@ -47,7 +47,6 @@ jobs:
           -Dsonar.issue.ignore.multicriteria=e1 \
           -Dsonar.issue.ignore.multicriteria.e1.ruleKey=* \
           -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*Test.java \
-          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*" \
-          -Dsonar.exclusions="pom.xml,**/*.xml,**/src/test/**/*,**/*Test.java,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/jmlexamples/**/*,**/Examples.java,**/*Utils.java,**/BeanMap.java,**/functors/**/*,**/transformers/**/*,**/comparators/**/*,**/closures/**/*,**/factory/**/*,**/map/ReferenceMap.java,**/map/LazyMap.java,**/map/TransformedMap.java,**/map/MultiKeyMap.java" \
-          -Dsonar.test.exclusions="**/src/test/**/*,**/*Test.java,**/BagUtilsTest.java,**/IteratorUtilsTest.java,**/*Utils.java,**/jmlexamples/**/*" \
-          -Dsonar.projectVersion=12.0
+          -Dsonar.exclusions="pom.xml,**/*.xml,**/jmlexamples/**/*,**/Examples.java" \
+          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java,**/jmlexamples/**/*,**/Examples.java" \
+          -Dsonar.projectVersion=14.0
