@@ -39,12 +39,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # Hne badalna tari9et l ktiba (Multi-line) bech nadhmnou l exclusions yet3addaw s7a7
         run: |
           mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=fdhrifi-del_commons-collections \
           -Dsonar.organization=fdhrifi-del \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java" \
-          -Dsonar.exclusions="**/functors/**/*,**/transformers/**/*,**/*Transformer.java,**/*Closure.java,**/*Factory.java,**/map/**/*,**/src/test/**/*,**/pom.xml" \
-          -Dsonar.projectVersion=3.0
+          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java" \
+          -Dsonar.exclusions="**/functors/**/*,**/comparators/**/*,**/*Comparator.java" \
+          -Dsonar.projectVersion=3.1
