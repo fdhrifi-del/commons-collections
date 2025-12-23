@@ -32,6 +32,7 @@
     <!-- Disable Apache CI checks -->
     <rat.skip>true</rat.skip>
     <dependency-check.skip>true</dependency-check.skip>
+    <animal.sniffer.skip>true</animal.sniffer.skip>
   </properties>
 
   <!-- ========================= -->
