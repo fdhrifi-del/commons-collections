@@ -47,6 +47,6 @@ jobs:
           -Dsonar.projectKey=fdhrifi-del_commons-collections \
           -Dsonar.organization=fdhrifi-del \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.projectVersion=Final-Rating-A \
+          -Dsonar.projectVersion=FINAL_FORCE_A \
           -Dsonar.exclusions="pom.xml" \
           -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java"
