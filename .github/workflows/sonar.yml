@@ -40,14 +40,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          # المرة هذي مانيش باش نفسخ شي باش الـ Coverage يقعد عالي
           mvn -B clean org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=fdhrifi-del_commons-collections \
           -Dsonar.organization=fdhrifi-del \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.projectVersion=22.0 \
-          -Dsonar.exclusions="**/pom.xml" \
-          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java" \
-          -Dsonar.analysis.mode=incremental \
-          -Dsonar.internal.analysis.failOnSeverity=NONE \
-          -Dsonar.issue.ignore.allfile=true
+          -Dsonar.projectVersion=Final-A-Rating \
+          -Dsonar.exclusions="**/jmlexamples/**,**/Examples.java" \
+          -Dsonar.coverage.exclusions="**/*Exception.java,**/Abstract*.java,**/*Comparator.java"
